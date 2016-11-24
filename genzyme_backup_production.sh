@@ -26,9 +26,13 @@ case "$1" in
 
 	"pro-INSTALL")
 	    ##### DESCOMPRIMIR EN LOCAL
-		DATE=`TZ=GMT-8 date +%Y%m%d`
-		DEPLOY_PATH=~/posters.macrofono.es/genzyme
-		FILE_TO_DEPLOY=~/posters.macrofono.es/_backup/incoming/$DATE-genzyme-backup-dev.tar.gz
+DATE=`TZ=GMT-8 date +%Y%m%d`
+DEPLOY_PATH=~/posters.macrofono.es/genzyme
+FILE_TO_DEPLOY=~/posters.macrofono.es/_backup/incoming/$DATE-genzyme-backup-dev.tar.gz
+
+echo 'DATE           :: '$DATE
+echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
+echo 'FILE_TO_DEPLOY :: '$FILE_TO_DEPLOY
 		
 		# tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH
 		echo 'tar -zxf '$FILE_TO_DEPLOY' -C '$DEPLOY_PATH
@@ -73,7 +77,7 @@ case "$1" in
 	"pro-backup")
 	    ##### BACKUP LOCAL en $APP/_backup
 		ENV=dev
-		APP_ROUTE=~/posters.macrofono.es/genzyme
+		APP_ROUTE=~/posters.macrofono.es/genzyme/genzyme
 		APP_BACKUP_ROUTE=~/posters.macrofono.es/_backup/production
 
 		# DATE=`date +'%Y%m%d'`
