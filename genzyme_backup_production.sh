@@ -34,7 +34,7 @@ case "$1" in
 		echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
 		echo 'FILE_TO_DEPLOY :: '$FILE_TO_DEPLOY
 		
-		# tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH
+		tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH
 		echo 'tar -zxf '$FILE_TO_DEPLOY' -C '$DEPLOY_PATH
 		
 		echo '### INSTALLATION EXECUTED'
