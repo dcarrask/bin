@@ -8,11 +8,11 @@ case "$1" in
 
 	"deploy")
 	    ##### DESCOMPRIMIR EN LOCAL
-		ENV=pro
+		# ENV=pro
 		DATE=`TZ=GMT-8 date +%Y%m%d`
 		
 		APP=genzyme
-		FILE_NAME=$DATE-$APP-backup-$ENV.tar.gz
+		FILE_NAME=$DATE-$APP-backup-dev.tar.gz
 		# APP_BACKUP_ROUTE_INCOMING=~/workspace/aleix/genzyme/_backup
 		APP_BACKUP_ROUTE_INCOMING=~/posters.macrofono.es/_backup/incoming
 
