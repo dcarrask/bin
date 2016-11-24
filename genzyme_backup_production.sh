@@ -21,7 +21,7 @@ case "$1" in
 		echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
 
 		tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH/$DATE
-		;;
+
 		;;
 
 	"pro-INSTALL")
