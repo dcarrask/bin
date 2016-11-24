@@ -6,7 +6,7 @@ echo $0 $1
 
 case "$1" in
 
-	"pro-deploy")
+	"deploy")
 	    ##### DESCOMPRIMIR EN LOCAL
 		ENV=pro
 		DATE=`TZ=GMT-8 date +%Y%m%d`
