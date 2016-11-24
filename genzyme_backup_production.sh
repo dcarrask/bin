@@ -6,7 +6,7 @@ echo $0 $1
 
 case "$1" in
 
-	"deploy")
+	"pro-deploy")
 	    ##### DESCOMPRIMIR EN LOCAL
 		# ENV=pro
 		DATE=`TZ=GMT-8 date +%Y%m%d`
@@ -31,6 +31,22 @@ case "$1" in
 	    ;;
 
 
+	"pro-backup")
+	    ##### BACKUP LOCAL en $APP/_backup
+		ENV=dev
+		APP_ROUTE=~/posters.macrofono.es/genzyme
+		APP_BACKUP_ROUTE=~/posters.macrofono.es/_backup/production
+
+		# DATE=`date +'%Y%m%d'`
+		DATE=`TZ=GMT-8 date +%Y%m%d`
+		FILE_NAME=$DATE-genzyme-backup-pro.tar.gz
+
+		tar -zcf $APP_BACKUP_ROUTE/$FILE_NAME -C $APP_ROUTE .
+
+		echo '### BACKUP COMPLETED :: '$APP_BACKUP_ROUTE/$FILE_NAME
+		echo '    '$APP_ROUTE
+		echo '    '$APP_BACKUP_ROUTE/$FILE_NAME
+	    ;;
 
 	*)
 	    echo "You have failed to specify what to do correctly."
