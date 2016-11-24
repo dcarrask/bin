@@ -1,0 +1,1 @@
+say --progress --rate=10 'Las primeras hipótesis apuntan a que el agresor sufre problemas mentales aunque no se descarta que el suceso esté relacionado con el terrorismo'
