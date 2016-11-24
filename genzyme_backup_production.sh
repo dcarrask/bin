@@ -1,33 +1,70 @@
-#scp ~/workspace/aleix/genzyme/_backup/20161124-genzyme-backup-dev.tar.gz postersgenzyme@ps63196.dreamhost.com:~/posters.macrofonoestudio.es/_backup/incoming
-#scp ~/diego/bin/genzyme_backup_production.sh postersgenzyme@ps63196.dreamhost.com:~/bin
+# scp ~/workspace/aleix/genzyme/_backup/20161124-genzyme-backup-dev.tar.gz postersgenzyme@ps63196.dreamhost.com:~/posters.macrofonoestudio.es/_backup/incoming
+# scp ~/diego/bin/genzyme_backup_production.sh postersgenzyme@ps63196.dreamhost.com:~/bin
+# mkdir $APP_BACKUP_ROUTE_INCOMING/deploy $APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
+# touch ~/posters.macrofono.es/tmp/restart.txt
 
 echo 'DJANGO APP BACKUP MANAGEMENT'
 echo $0 $1
 
 case "$1" in
 
-	"pro-deploy")
-	    ##### DESCOMPRIMIR EN LOCAL
-		# ENV=pro
+	"pro-backup-deploy")
 		DATE=`TZ=GMT-8 date +%Y%m%d`
+		DEPLOY_PATH=~/posters.macrofono.es/_backup/production/deploy
+		FILE_TO_DEPLOY=~/posters.macrofono.es/_backup/production/20161124-genzyme-backup-pro.tar.gz
+		mkdir $DEPLOY_PATH
+		mkdir $DEPLOY_PATH/$DATE
+		echo $DATE
+		echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
+		echo '$DEPLOY_PATH/$DATE :: '$DEPLOY_PATH/$DATE
+		echo 'FILE_TO_DEPLOY :: '$FILE_TO_DEPLOY
+		echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
+
+		tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH/$DATE
+
+	"pro-dev-deploy")
+	    ##### DESCOMPRIMIR EN LOCAL
+		DATE=`TZ=GMT-8 date +%Y%m%d`
+		DEPLOY_PATH=~/posters.macrofono.es/genzyme
+		FILE_TO_DEPLOY=~/posters.macrofono.es/_backup/incoming/$DATE-genzyme-backup-dev.tar.gz
 		
-		APP=genzyme
-		FILE_NAME=$DATE-$APP-backup-dev.tar.gz
-		# APP_BACKUP_ROUTE_INCOMING=~/workspace/aleix/genzyme/_backup
-		APP_BACKUP_ROUTE_INCOMING=~/posters.macrofono.es/_backup/incoming
-
-		SOURCE_PATH=$APP_BACKUP_ROUTE_INCOMING/$FILE_NAME
+		# tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH
+		echo 'tar -zxf '$FILE_TO_DEPLOY' -C '$DEPLOY_PATH
 		
-		DEPLOY_PATH=$APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
-		# DEPLOY_PATH=$APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
-
-		mkdir $APP_BACKUP_ROUTE_INCOMING/deploy $APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
-
-		tar -zxf $SOURCE_PATH -C $DEPLOY_PATH
-
-		echo '### BACKUP UNCOMPRESSED'
-		echo '    '$SOURCE_PATH
+		echo '### INSTALLATION EXECUTED'
+		echo '    '$FILE_TO_DEPLOY
 		echo '    '$DEPLOY_PATH
+
+		# DEPLOY_PATH=~/posters.macrofono.es/_backup/production/deploy
+		# FILE_TO_DEPLOY=~/posters.macrofono.es/_backup/production/20161124-genzyme-backup-pro.tar.gz
+		# mkdir $DEPLOY_PATH
+		# mkdir $DEPLOY_PATH/$DATE
+		# echo $DATE
+		# echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
+		# echo '$DEPLOY_PATH/$DATE :: '$DEPLOY_PATH/$DATE
+		# echo 'FILE_TO_DEPLOY :: '$FILE_TO_DEPLOY
+		# echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
+
+		# tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH/$DATE
+
+		# ENV=pro
+		# DATE=`TZ=GMT-8 date +%Y%m%d`
+		
+		# APP=genzyme
+		# FILE_NAME=$DATE-$APP-backup-dev.tar.gz
+		# # APP_BACKUP_ROUTE_INCOMING=~/workspace/aleix/genzyme/_backup
+		# APP_BACKUP_ROUTE_INCOMING=~/posters.macrofono.es/_backup/incoming
+
+		# SOURCE_PATH=$APP_BACKUP_ROUTE_INCOMING/$FILE_NAME
+		
+		# DEPLOY_PATH=$APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
+		# DEPLOY_PATH=~/posters.macrofono.es/
+		# # DEPLOY_PATH=$APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
+
+		# mkdir $APP_BACKUP_ROUTE_INCOMING/deploy $APP_BACKUP_ROUTE_INCOMING/deploy/$DATE
+
+		# tar -zxf $SOURCE_PATH -C $DEPLOY_PATH
+
 	    ;;
 
 
@@ -46,6 +83,7 @@ case "$1" in
 		echo '### BACKUP COMPLETED :: '$APP_BACKUP_ROUTE/$FILE_NAME
 		echo '    '$APP_ROUTE
 		echo '    '$APP_BACKUP_ROUTE/$FILE_NAME
+		ls $APP_BACKUP_ROUTE
 	    ;;
 
 	*)
