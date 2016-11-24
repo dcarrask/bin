@@ -27,7 +27,7 @@ case "$1" in
 	"pro-INSTALL")
 	    ##### DESCOMPRIMIR EN LOCAL
 		DATE=`TZ=GMT-8 date +%Y%m%d`
-		DEPLOY_PATH=~/posters.macrofono.es/genzyme
+		DEPLOY_PATH=~/posters.macrofono.es/genzyme/genzyme
 		FILE_TO_DEPLOY=~/posters.macrofono.es/_backup/incoming/$DATE-genzyme-backup-dev.tar.gz
 
 		echo 'DATE           :: '$DATE
