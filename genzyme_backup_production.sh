@@ -21,8 +21,10 @@ case "$1" in
 		echo 'DEPLOY_PATH    :: '$DEPLOY_PATH
 
 		tar -zxf $FILE_TO_DEPLOY -C $DEPLOY_PATH/$DATE
+		;;
+		;;
 
-	"pro-dev-deploy")
+	"pro-INSTALL")
 	    ##### DESCOMPRIMIR EN LOCAL
 		DATE=`TZ=GMT-8 date +%Y%m%d`
 		DEPLOY_PATH=~/posters.macrofono.es/genzyme
